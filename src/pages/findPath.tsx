@@ -2,14 +2,11 @@ import type { AppContext } from 'next/app';
 import React from "react"
 import styles from "../../styles/Home.module.css"
 import Layout from "../components/Layout"
+import { Path } from '../views/interfaces/Path';
 
-export interface PathProps {
-    metricUsed : string;
-    fromVertexId : number;
-    toVertexId : number;
-    verticesFromTo : number[];
-    totalWeight : number;
+export interface PathProps extends Path {
 }
+
 export default function findPath(props : Readonly<PathProps>) {
     //console.log("Menu");
     //const verticesFromTo = [1,2,3];
