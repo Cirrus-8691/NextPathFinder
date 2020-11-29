@@ -1,9 +1,8 @@
-import { RequestGenericInterface } from "fastify";
 
 /**
 * FindPath Parameters of url request
  */
-export interface FindPathParameters  extends RequestGenericInterface {
+export interface FindPathParameters {
     /** from vertex id */
     from : number; 
     /** to vertex id */

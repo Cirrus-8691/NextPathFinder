@@ -1,26 +1,33 @@
+import useSWR from 'swr';
 import type { AppContext } from 'next/app';
 import React from "react"
 import styles from "../../styles/Home.module.css"
 import Layout from "../components/Layout"
-import { Path } from '../views/interfaces/Path';
+import { FindPathParameters } from '../domain/interfaces/FindPathParameters';
 
-export interface PathProps extends Path {
+const fetcher = (url : string) => fetch(url).then((res) => res.json())
+
+export interface PathProps {
+    queryParameters : string,
 }
 
 export default function findPath(props : Readonly<PathProps>) {
-    //console.log("Menu");
-    //const verticesFromTo = [1,2,3];
+    console.log("findPath");
+
+    const { data, error } = useSWR(`/api/find?${props.queryParameters}`, fetcher)
+    if (error) return <div>Failed to load</div>
+    if (!data) return <div>Loading...</div>
 
     return <Layout trail="Home" href="/">
 
                 <div className={styles.layout} >
-                    Shorter path from vertex id:{props.fromVertexId}
-                    to vertex id:{props.toVertexId}
+                    Shorter path from vertex id:{data.fromVertexId}
+                    to vertex id:{data.toVertexId}
                     using the metric 
-                    <b> {props.metricUsed}</b> is :<br/> 
+                    <b> {data.metricUsed}</b> is :<br/> 
                     <ul>
-                        <li id="path">{props.verticesFromTo.join(" => ")}</li>
-                        <li>for a total "lenght" of {props.totalWeight}</li>
+                        <li id="path">{data.verticesFromTo.join(" => ")}</li>
+                        <li>for a total "lenght" of {data.totalWeight}</li>
                     </ul>
                 </div>
 
@@ -28,11 +35,12 @@ export default function findPath(props : Readonly<PathProps>) {
 }
 
 findPath.getInitialProps = async (appContext: AppContext) => {
-    return {
-        metricUsed : "km",
-        fromVertexId : 0,
-        toVertexId : 4,
-        verticesFromTo : [1,2,3],
-        totalWeight : 18
+    const param : FindPathParameters = {
+        from : 1,
+        to : 2,
+        by : "km"
     }
+    return {
+        queryParameters: `from=${param.from}&to=${param.to}&by=${param.by}`
+    };
 }
