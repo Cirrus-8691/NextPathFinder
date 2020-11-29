@@ -1,9 +1,9 @@
 import useSWR from 'swr';
-import type { AppContext } from 'next/app';
 import React from "react"
 import styles from "../../styles/Home.module.css"
 import Layout from "../components/Layout"
 import { FindPathParameters } from '../domain/interfaces/FindPathParameters';
+import { NextPageContext } from 'next';
 
 const fetcher = (url : string) => fetch(url).then((res) => res.json())
 
@@ -12,7 +12,7 @@ export interface PathProps {
 }
 
 export default function findPath(props : Readonly<PathProps>) {
-    console.log("findPath");
+    //console.log("findPath");
 
     const { data, error } = useSWR(`/api/find?${props.queryParameters}`, fetcher)
     if (error) return <div>Failed to load</div>
@@ -34,13 +34,15 @@ export default function findPath(props : Readonly<PathProps>) {
         </Layout>
 }
 
-findPath.getInitialProps = async (appContext: AppContext) => {
-    const param : FindPathParameters = {
-        from : 1,
-        to : 2,
-        by : "km"
-    }
-    return {
-        queryParameters: `from=${param.from}&to=${param.to}&by=${param.by}`
+findPath.getInitialProps = async (context: NextPageContext) => {
+    // console.log(appContext.query);
+
+    const params : FindPathParameters = {
+        from : +context.query.from,
+        to : +context.query.to,
+        by : context.query.by as string 
     };
+    const queryParameters = `from=${params.from}&to=${params.to}&by=${params.by}`;
+    console.log(queryParameters);
+    return { queryParameters };
 }
