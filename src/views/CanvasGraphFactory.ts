@@ -1,29 +1,22 @@
-import { GEdge, GVertex } from "../components/Graph";
-import Graph, { ByEcoPath, ByFastestPath } from "../domain/Graph";
-import { Vertex } from "../domain/interfaces/Vertex";
+import Graph from "../domain/Graph";
+import Infos from "./interfaces/Infos";
 
-export interface Infos {
-    minVertexId : number;
-    maxVertexId : number;
-    vertices : GVertex[];
-    edges : GEdge[];
-  }
 /**
- * To build path as expected by ihm
+ * To build graph as expected by ihm
  */
 export default class CanvasGraphFactory {
     /**
-     * Build the path "view"
+     * Build the graph "view"
      * @param graph
      */
-    public static Build(graph : Graph)
+    public static Build(graph : Graph) : Infos
     {
         const infos : Infos = {
             minVertexId : graph.Info.minVertexId,
             maxVertexId : graph.Info.maxVertexId,
             vertices : [
-                {x: 0, y: 0},  // id : 0
-                {x: 1, y: 1},  // id : 1
+                {x: 0, y: 0}, // id : 0
+                {x: 1, y: 1}, // id : 1
                 {x: 0, y: 2}, // id : 2
                 {x: 0, y: 1}, // id : 3
                 {x: 1, y: 0}, // id : 4

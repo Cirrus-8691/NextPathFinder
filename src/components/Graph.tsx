@@ -1,6 +1,5 @@
 import styles from "../../styles/Home.module.css"
 import React, { useEffect, useRef } from "react";
-import { Path } from "../views/interfaces/Path";
 
 export interface GVertex {
     x : number, 

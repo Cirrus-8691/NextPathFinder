@@ -3,7 +3,7 @@ import Graph from "../../domain/Graph";
 import CanvasGraphFactory from "../../views/CanvasGraphFactory";
 
 /**
- * Controller to find a path
+ * Controller to get graph informations
  */
 export default (request : NextApiRequest, response : NextApiResponse) => {
   try {

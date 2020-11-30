@@ -1,7 +1,7 @@
 /**
  * Path between vertice
  */
-export interface Path
+export default interface Path
 {
     /** path From Vertex's Id */
     fromVertexId : number,

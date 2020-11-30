@@ -1,6 +1,6 @@
-import { FindPathParameters } from "../controllers/requestParameters/FindPathParameters";
 import { ShorterPath } from "../domain/Graph";
-import { Path } from "./interfaces/Path";
+import { FindPathParameters } from "../domain/interfaces/FindPathParameters";
+import Path from "./interfaces/Path";
 
 /**
  * To build path as expected by ihm

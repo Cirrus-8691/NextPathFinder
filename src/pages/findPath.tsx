@@ -12,7 +12,10 @@ const fetcher = (url : string) => fetch(url).then((res) => res.json());
 export interface PathProps {
     queryParameters : string,
 }
-
+/**
+ * Find path in graph result page
+ * @param props 
+ */
 export default function findPath(props : Readonly<PathProps>) {
     //console.log("findPath");
 
