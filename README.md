@@ -69,8 +69,9 @@ npm run dev
  - Be careful the service checks the border of the vertex's id and can throw exceptions.<br>
 
 ## Other tests
-- To run the unit tests, type :
+- To run the unit, intergration and end to end tests, type :
 ```bash
+npm run build
 npm test
 ```
 

@@ -32,12 +32,12 @@ export default function index() {
                   <label>form vertex id </label>
                   <input type="number" id="from" name="from" required
                       min={data.minVertexId} max={data.maxVertexId}
-                      defaultValue={data.minVertexId} />
+                       />
 
                   <label> to id </label>
                   <input type="number" id="to" name="to" required
                       min={data.minVertexId} max={data.maxVertexId}
-                      defaultValue={data.maxVertexId} />
+                       />
 
                   <label> by (km, co) </label>
                   <input type="text" id="by" name="by" required 

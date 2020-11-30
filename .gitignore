@@ -13,6 +13,11 @@
 /out/
 .out
 
+# Cypress samples
+cypress/integration/examples/
+cypress/videos/
+cypress/screenshots/
+
 # production
 /build
 
