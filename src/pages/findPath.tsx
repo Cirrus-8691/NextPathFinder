@@ -57,6 +57,5 @@ findPath.getInitialProps = async (context: NextPageContext) => {
         by : context.query.by as string 
     };
     const queryParameters = `from=${params.from}&to=${params.to}&by=${params.by}`;
-    console.log(queryParameters);
     return { queryParameters };
 }
