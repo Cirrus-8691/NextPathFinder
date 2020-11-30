@@ -24,13 +24,13 @@
   </a>
 </p>
 <p>
-  <a href="https://www.fastify.io/">
+  <a href="https://mochajs.org/">
     <img
         alt="unitTests:mocha+chai"
         src="https://img.shields.io/badge/Unit_Tests-Chai_Mocha-aa4720"
     />
   </a>
-  <a href="https://www.fastify.io/">
+  <a href="https://www.cypress.io/">
     <img
         alt="endToEndTests:Cypress"
         src="https://img.shields.io/badge/EndToEnd_Tests-Cypress-aa4720"
