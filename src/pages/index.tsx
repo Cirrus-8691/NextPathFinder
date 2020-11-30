@@ -1,17 +1,29 @@
-import type { AppContext } from 'next/app';
+import useSWR from 'swr';
 import React from "react"
 import Layout from "../components/Layout"
 import styles from "../../styles/Home.module.css"
+import Graph, { GraphProps } from '../components/Graph';
+import { ByEcoPath, ByFastestPath } from '../domain/Graph';
 
-export interface Props {
-  minVertexId : number;
-  maxVertexId : number;
-}
+const fetcher = (url : string) => fetch(url).then((res) => res.json());
+/**
+ * Home page
+ */
+export default function index() {
+    //console.log("Menu");
 
-export default function index(props : Readonly<Props>) {
-  //console.log("Menu");
+    const { data, error } = useSWR(`/api/graphInfos`, fetcher);
+    if (error) return <div>Failed to load</div>
+    if (!data) return <div>Loading...</div>
 
-  return  <Layout trail="Find path from 0 to 4 by km" href="/findPath?from=0&to=4&by=km">
+    const graphProps : GraphProps = {
+      verticesFromTo : [],
+      metrics : [ ByFastestPath, ByEcoPath ],
+      vertices : data.vertices,
+      edges : data.edges
+    }
+
+    return  <Layout trail="Find path from 0 to 4 by km" href="/findPath?from=0&to=4&by=km">
 
           <div className={styles.layout} >
               <form action="findPath" method="get">
@@ -19,13 +31,13 @@ export default function index(props : Readonly<Props>) {
 
                   <label>form vertex id </label>
                   <input type="number" id="from" name="from" required
-                      min={props.minVertexId} max={props.maxVertexId}
-                      defaultValue={props.minVertexId} />
+                      min={data.minVertexId} max={data.maxVertexId}
+                      defaultValue={data.minVertexId} />
 
                   <label> to id </label>
                   <input type="number" id="to" name="to" required
-                      min={props.minVertexId} max={props.maxVertexId}
-                      defaultValue={props.maxVertexId} />
+                      min={data.minVertexId} max={data.maxVertexId}
+                      defaultValue={data.maxVertexId} />
 
                   <label> by (km, co) </label>
                   <input type="text" id="by" name="by" required 
@@ -35,15 +47,12 @@ export default function index(props : Readonly<Props>) {
                       Go
                   </button>
                   <br/>
-                  Maximum: {props.maxVertexId} and minimum: {props.minVertexId} are border values for vertex id.
+                  Maximum: {data.maxVertexId} and minimum: {data.minVertexId} are border values for vertex id.
               </form>
             </div>
+
+            <Graph {...graphProps}></Graph>
+
           </Layout>
 }
 
-index.getInitialProps = async (appContext: AppContext) => {
-  return {
-    minVertexId : 0,
-    maxVertexId : 4
-  }
-}

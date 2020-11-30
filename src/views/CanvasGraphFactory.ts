@@ -1,6 +1,13 @@
-import { ByEcoPath, ByFastestPath } from "../domain/Graph";
+import { GEdge, GVertex } from "../components/Graph";
+import Graph, { ByEcoPath, ByFastestPath } from "../domain/Graph";
 import { Vertex } from "../domain/interfaces/Vertex";
 
+export interface Infos {
+    minVertexId : number;
+    maxVertexId : number;
+    vertices : GVertex[];
+    edges : GEdge[];
+  }
 /**
  * To build path as expected by ihm
  */
@@ -9,28 +16,28 @@ export default class CanvasGraphFactory {
      * Build the path "view"
      * @param graph
      */
-    public static Build(graph : ReadonlyArray<Vertex>)
+    public static Build(graph : Graph)
     {
-      return  { 
+        const infos : Infos = {
+            minVertexId : graph.Info.minVertexId,
+            maxVertexId : graph.Info.maxVertexId,
             vertices : [
-                "0, 0", // id : 0
-                "1, 1", // id : 1
-                "0, 2", // id : 2
-                "0, 1", // id : 3
-                "1, 0", // id : 4
+                {x: 0, y: 0},  // id : 0
+                {x: 1, y: 1},  // id : 1
+                {x: 0, y: 2}, // id : 2
+                {x: 0, y: 1}, // id : 3
+                {x: 1, y: 0}, // id : 4
             ],
             edges : [
-            //  id, x, y   id, x, y,  km ,  co2
-                `0, 0, 0,   4, 1, 0, 125.6, 18.7`,
-                `4, 1, 0,   1, 1, 1,  5.3, 0.2`,
-                `3, 0, 1,   1, 1, 1, 30.7, 4.0`,
-                `0, 0, 0,   3, 0, 1, 80.2, 4.0`,
-                `3, 0, 1,   2, 0, 2, 30.8, 4.0`
-            ],
-            metrics : [
-                ByFastestPath,
-                ByEcoPath
+                //                                                       km ,  co2
+                { id1: 0, v1: {x: 0, y:0 }, id2:4, v2: {x:1, y:0 }, m1: 125.6, m2: 18.7},
+                { id1: 4, v1: {x: 1, y:0 }, id2:1, v2: {x:1, y:1 }, m1: 125.6, m2: 18.7},
+                { id1: 3, v1: {x: 0, y:1 }, id2:1, v2: {x:1, y:1 }, m1: 125.6, m2: 18.7},
+                { id1: 0, v1: {x: 0, y:0 }, id2:3, v2: {x:0, y:1 }, m1: 125.6, m2: 18.7},
+                { id1: 3, v1: {x: 0, y:1 }, id2:2, v2: {x:0, y:2 }, m1: 125.6, m2: 18.7},
+
             ]
         };
+        return infos;
     };
 }
