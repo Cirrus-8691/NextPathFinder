@@ -10,6 +10,10 @@
   width: 20%;
 }
 
+.titleframe {
+  background-color: #757a75;
+}
+
 .title {
   text-align: center; 
   display: inline-block; 
@@ -17,6 +21,7 @@
 }
 
 .trail {
+  padding-top : 10px;
   padding-left: 40px;
 }
 
