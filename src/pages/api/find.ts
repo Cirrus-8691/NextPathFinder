@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import Graph from "../../domain/Graph";
 import { FindPathParameters } from "../../domain/interfaces/FindPathParameters";
+import CanvasGraphFactory from "../../views/CanvasGraphFactory";
 import PathFactory from "../../views/PathFactory";
 
 /**
@@ -20,8 +21,9 @@ export default (request : NextApiRequest, response : NextApiResponse) => {
 
     const graph = new Graph();
     const path  = PathFactory.Build( params, graph.find(params) );
+    const infos  = CanvasGraphFactory.Build( graph );
 
-    response.status(200).json( path );
+    response.status(200).json( {...path,...infos} );
   }
   catch(error) {
     console.error(new Date(Date.now()), "/api/find", error);
