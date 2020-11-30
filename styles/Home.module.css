@@ -5,11 +5,15 @@
 }
 
 .logo {
-  text-align:left; display: inline-block; width: 20%;
+  text-align: left; 
+  display: inline-block; 
+  width: 20%;
 }
 
 .title {
-  text-align:center; display: inline-block; width: 79%;
+  text-align: center; 
+  display: inline-block; 
+  width: 79%;
 }
 
 .trail {
@@ -17,7 +21,7 @@
 }
 
 .layout {
-  margin:20px;
+  margin: 20px;
 }
 
 .graphAscii {
@@ -25,15 +29,15 @@
 }
 
 .graph{
-  margin : 0;
+  margin: 0;
   margin-left: 40px;
   margin-right: 40px;
-  text-align:center;
+  text-align: center;
 }
 
 .error {
   background-color: #9b1f53;
-  padding : 10px;
+  padding: 10px;
 }
 
 .footer {

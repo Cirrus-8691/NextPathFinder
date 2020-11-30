@@ -1,6 +1,7 @@
 import type { AppContext } from 'next/app';
 import React from "react"
 import Layout from "../components/Layout"
+import styles from "../../styles/Home.module.css"
 
 export interface Props {
   minVertexId : number;
@@ -12,31 +13,31 @@ export default function index(props : Readonly<Props>) {
 
   return  <Layout trail="Find path from 0 to 4 by km" href="/findPath?from=0&to=4&by=km">
 
-            <form action="findPath" method="get">
-                Test : Find a path 
+          <div className={styles.layout} >
+              <form action="findPath" method="get">
+                  Test : Find a path 
 
-                <label>form vertex id</label>
-                <input type="number" id="from" name="from" required
-                    min={props.minVertexId} max={props.maxVertexId}
-                    defaultValue={props.minVertexId} />
+                  <label>form vertex id </label>
+                  <input type="number" id="from" name="from" required
+                      min={props.minVertexId} max={props.maxVertexId}
+                      defaultValue={props.minVertexId} />
 
-                <label>to id</label>
-                <input type="number" id="to" name="to" required
-                    min={props.minVertexId} max={props.maxVertexId}
-                    defaultValue={props.maxVertexId} />
+                  <label> to id </label>
+                  <input type="number" id="to" name="to" required
+                      min={props.minVertexId} max={props.maxVertexId}
+                      defaultValue={props.maxVertexId} />
 
-                <label>by (km, co)</label>
-                <input type="text" id="by" name="by" required 
-                    defaultValue="km" size={4}/>
-
-                <button type="submit" id="go">
-                    Go
-                </button>
-                <br/>
-                Maximum: {props.maxVertexId} and minimum :{props.minVertexId}
-                are border values for vertex id.
-            </form>
-
+                  <label> by (km, co) </label>
+                  <input type="text" id="by" name="by" required 
+                      defaultValue="km" size={4}/>
+                  {' '}
+                  <button type="submit" id="go">
+                      Go
+                  </button>
+                  <br/>
+                  Maximum: {props.maxVertexId} and minimum: {props.minVertexId} are border values for vertex id.
+              </form>
+            </div>
           </Layout>
 }
 
