@@ -5,9 +5,16 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "watch": "tsc --watch --project ./tsconfig.test.json",
+    "mocha:build": "tsc -p ./tsconfig.test.json",
+    "mocha:run": "mocha --timeout 20000 .out/tests/_RunTests.js",
     "start": "next start"
   },
   "dependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.0.4",
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
     "next": "10.0.3",
     "react": "17.0.1",
     "react-dom": "17.0.1",
