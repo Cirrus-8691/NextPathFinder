@@ -22,12 +22,25 @@
         src="https://img.shields.io/badge/Front-React-45d298"
     />
   </a>
-
+</p>
+<p>
+  <a href="https://www.fastify.io/">
+    <img
+        alt="unitTests:mocha+chai"
+        src="https://img.shields.io/badge/Unit_Tests-Chai_Mocha-aa4720"
+    />
+  </a>
+  <a href="https://www.fastify.io/">
+    <img
+        alt="endToEndTests:Cypress"
+        src="https://img.shields.io/badge/EndToEnd_Tests-Cypress-aa4720"
+    />
+  </a>
 
 ![Node.js CI](https://github.com/Cirrus-8691/NextPathFinder/workflows/Node.js%20CI/badge.svg?branch=master)
 
-
 </p>
+
 Author : Frédéric Diaz<br>
 This is a web site used to find the fastest or eco path between two vertices in a graph.
 
