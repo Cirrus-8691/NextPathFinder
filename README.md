@@ -71,7 +71,6 @@ npm run dev
 ## Other tests
 - To run the unit, intergration and end to end tests, type :
 ```bash
-npm run build
 npm test
 ```
 
