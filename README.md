@@ -38,7 +38,6 @@
   </a>
 
 [![Node.js CI](https://github.com/Cirrus-8691/NextPathFinder/actions/workflows/node.js.yml/badge.svg)](https://github.com/Cirrus-8691/NextPathFinder/actions/workflows/node.js.yml)
-![Node.js CI](https://github.com/Cirrus-8691/NextPathFinder/workflows/Node.js%20CI/badge.svg?branch=master)
 
 </p>
 
