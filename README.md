@@ -2,8 +2,8 @@
 <p>
   <a href="./LICENSE">
       <img
-        alt="license:GPL"
-        src="https://img.shields.io/badge/License-GPL-blue"
+        alt="license:MIT"
+        src="https://img.shields.io/badge/License-MIT-blue"
       />
   </a>
   <img
